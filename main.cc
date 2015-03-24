@@ -2,7 +2,7 @@
  * \file main.cc
  * \author Mohamed Aly <malaa@caltech.edu>
  * \date Wed Oct 6, 2010
- *
+ * \edited by: Ruthvik Vaila(ruthvik.nitc@gmail.com)
  */
 #include <ros/ros.h>
 #include <image_transport/image_transport.h>
@@ -27,10 +27,7 @@ int i=0;
 using namespace std;
 
 cv::Mat raw_mat1;
-//cv::Mat raw_matB;
-//cv::Mat mat1;
-//using namespace cv;
-// Useful message macro
+
 
 #define MSG(fmt, ...) \
   (fprintf(stdout, "%s:%d msg   " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__) ? 0 : 0)
@@ -241,17 +238,14 @@ namespace LaneDetector
     
 
 } // namespace LaneDetector
-
+/// callback function to subscribe images.
 void imageCallback(const sensor_msgs::ImageConstPtr& msg)
 {
   //ROS_INFO("xcjkhkjzcbhkjxb");
    i++;
   try  
      { 
-     //cv::imshow("view", cv_bridge::toCvShare(msg, "bgr8")->image);
-      //string ssave1 = "/home/iiith/Desktop/new/" + ss.str()+ ".jpg";
-      //raw_matB = cv_bridge::toCvShare(msg, "mono8")->image;
-      //cv::imshow("view", cv_bridge::toCvShare(msg, "mono8")->image);       
+      
       raw_mat1 = cv_bridge::toCvShare(msg, "bgr8")->image;
       cv::imshow("view", raw_mat1);    
       //cv::imwrite(ssave1,cv_bridge::toCvShare(msg, "bgr8")->image);
